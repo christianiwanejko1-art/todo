@@ -37,7 +37,28 @@ const createHome = function () {
     nav.append(logo,navSide,team);
     main.appendChild(nav);
 
-    content.appendChild(main);
+    const tasksContainer = document.createElement('div');
+    tasksContainer.id = 'tasksContainer';
+    const tasksInprogress = document.createElement('div');
+    tasksInprogress.classList.add('tasksInprogress');
+    const tasksInreview = document.createElement('div');
+    tasksInreview.classList.add('tasksInreview');
+    const tasksCompleted = document.createElement('div');
+    tasksCompleted.classList.add('tasksCompleted');
+    tasksInprogress.classList.add('taskContain');
+    tasksInreview.classList.add('taskContain');
+    tasksCompleted.classList.add('taskContain');
+
+    const tasksInner = document.createElement('div');
+    tasksInner.id = 'tasksInner';
+
+    tasksInner.append(tasksInprogress, tasksInreview, tasksCompleted)
+    tasksContainer.appendChild(tasksInner)
+
+    main.appendChild(tasksContainer)
+
+
+    content.append(main);
 };
 
 
