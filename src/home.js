@@ -96,6 +96,20 @@ function addCardProgress(title, summary, progress) {
     } else if (progress == 'Completed') {
         progress1 = document.querySelector('.tasksCompleted');
     }
+    const NS = "http://www.w3.org/2000/svg";
+
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.classList.add("icon", "icon-close"); // 👈 add class(es)
+
+    const path = document.createElementNS(NS, "path");
+    path.setAttribute(
+    "d",
+    "M9,7L11,12L9,17H11L12,14.5L13,17H15L13,12L15,7H13L12,9.5L11,7H9M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z"
+    );
+
+    svg.appendChild(path);
+
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     const cardH1 = document.createElement('h1');
@@ -104,8 +118,14 @@ function addCardProgress(title, summary, progress) {
     const cardP = document.createElement('p');
     cardP.textContent = summary;
 
-    cardDiv.append(cardH1, cardP);
+    svg.addEventListener('click', (x) => {
+        x.currentTarget.parentElement.remove();
+    })
+
+    cardDiv.append(svg, cardH1, cardP);
     progress1.append(cardDiv);
+
+
 }
 
 
