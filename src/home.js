@@ -41,10 +41,22 @@ const createHome = function () {
     tasksContainer.id = 'tasksContainer';
     const tasksInprogress = document.createElement('div');
     tasksInprogress.classList.add('tasksInprogress');
+    const tasksInProgressWrapper = document.createElement('div')
+    tasksInProgressWrapper.classList.add('tasksInProgressWrapper')
+    tasksInProgressWrapper.append(tasksInprogress)
+
     const tasksInreview = document.createElement('div');
     tasksInreview.classList.add('tasksInreview');
+    const tasksInReviewWrapper = document.createElement('div')
+    tasksInReviewWrapper.classList.add('tasksInReviewWrapper')
+    tasksInReviewWrapper.append(tasksInreview)
+
     const tasksCompleted = document.createElement('div');
     tasksCompleted.classList.add('tasksCompleted');
+    const tasksCompletedWrapper = document.createElement('div')
+    tasksCompletedWrapper.classList.add('tasksCompletedWrapper')
+    tasksCompletedWrapper.append(tasksCompleted)
+
     tasksInprogress.classList.add('taskContain');
     tasksInreview.classList.add('taskContain');
     tasksCompleted.classList.add('taskContain');
@@ -52,7 +64,7 @@ const createHome = function () {
     const tasksInner = document.createElement('div');
     tasksInner.id = 'tasksInner';
 
-    tasksInner.append(tasksInprogress, tasksInreview, tasksCompleted)
+    tasksInner.append(tasksInProgressWrapper, tasksInReviewWrapper, tasksCompletedWrapper)
     tasksContainer.appendChild(tasksInner)
 
     main.appendChild(tasksContainer)
@@ -62,4 +74,21 @@ const createHome = function () {
 };
 
 
-module.exports = { createHome }
+
+function addCardProgress(title, summary) {
+    const progress = document.querySelector('.tasksInprogress'); // or .tasksInprogress
+    const cardDiv = document.createElement('div');
+
+    const cardH1 = document.createElement('h1');
+    cardH1.textContent = title;
+
+    const cardP = document.createElement('p');
+    cardP.textContent = summary;
+
+    cardDiv.append(cardH1, cardP);
+    progress.append(cardDiv);
+}
+
+
+
+module.exports = { createHome, addCardProgress }
