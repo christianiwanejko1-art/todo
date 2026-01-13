@@ -1,6 +1,6 @@
 import "./styles.css";
-import { home } from "./home.js";
+import { createHome } from "./home.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    home()
+    createHome()
 });

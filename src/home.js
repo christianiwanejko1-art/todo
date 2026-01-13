@@ -1,8 +1,44 @@
 const content = document.getElementById('app');
 
-const home = function () {
-    console.log('test');
+const createHome = function () {
+    content.innerHTML = ''
+
+    const main = document.createElement('div');
+    main.id = 'main';
+
+    
+    const nav = document.createElement('nav');
+    const ul = document.createElement('ul');
+    ul.id = 'navUl';
+    let arr = ['Dashboard','Tasks','Notes','Email','Calender','Reports','Contacts','Invite Team'];
+    const logo = document.createElement('div');
+    logo.id = 'logo';
+    const logoH1 = document.createElement('h1');
+    logoH1.textContent = 'Logo';
+    logo.appendChild(logoH1);
+    const navSide = document.createElement('div');
+    navSide.id = 'navSide';
+    const h1Mainmenu = document.createElement('h1');
+    h1Mainmenu.textContent = 'Main Menu';
+    for (let i=0; i < 8; i++){
+        const li = document.createElement('li');
+        li.textContent = arr[i]
+        ul.appendChild(li);
+    }
+    const team = document.createElement('div');
+    team.id = 'workspace';
+    const teamLogo = document.createElement('div');
+    const teamTitle = document.createElement('h1');
+    teamTitle.textContent = 'Perception';
+    const teamWorkspace = document.createElement('p');
+    teamWorkspace.textContent = 'Workspace';
+    team.append(teamLogo,teamTitle,teamWorkspace);
+    navSide.append(h1Mainmenu, ul)
+    nav.append(logo,navSide,team);
+    main.appendChild(nav);
+
+    content.appendChild(main);
 };
 
 
-module.exports = { home }
+module.exports = { createHome }

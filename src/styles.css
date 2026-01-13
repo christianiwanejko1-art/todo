@@ -2,3 +2,39 @@
     padding: 0;
     margin: 0;
 }
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border-right: 1px solid gray;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 2fr 6fr 4fr 2fr;
+}
+
+#navUl {
+    list-style-type: none;
+}
+
+#logo {
+    grid-column: 1;
+    grid-row: 0 / 1;
+}
+
+#workspace {
+    grid-column: 1;
+    grid-row: 5 / 6;
+}
+
+#navSide {
+    grid-column: 1;
+    grid-row: 3 / 4;
+}
