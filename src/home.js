@@ -42,7 +42,7 @@ const createHome = function () {
     title.classList.add('title');
     title.textContent = 'Tasks List';
     const tasksInprogress = document.createElement('div');
-    tasksInprogress.classList.add('tasksInprogress');
+    tasksInprogress.classList.add('tasksInprogress2');
     const tasksinprogressH1 = document.createElement('h1');
     tasksinprogressH1.classList.add('tasksinprogressH1');
     tasksinprogressH1.textContent = 'In Progress';
@@ -52,7 +52,7 @@ const createHome = function () {
     tasksInProgressWrapper.append(tasksInprogress)
 
     const tasksInreview = document.createElement('div');
-    tasksInreview.classList.add('tasksInreview');
+    tasksInreview.classList.add('tasksInreview2');
     const tasksinreviewH1 = document.createElement('h1');
     tasksinreviewH1.classList.add('tasksinreviewH1');
     tasksinreviewH1.textContent = 'In Review';
@@ -62,7 +62,7 @@ const createHome = function () {
     tasksInReviewWrapper.append(tasksInreview)
 
     const tasksCompleted = document.createElement('div');
-    tasksCompleted.classList.add('tasksCompleted');
+    tasksCompleted.classList.add('tasksCompleted2');
     const taskscompletedH1 = document.createElement('h1');
     taskscompletedH1.classList.add('taskscompletedH1');
     taskscompletedH1.textContent = 'Completed';
@@ -90,11 +90,12 @@ const createHome = function () {
 
 
 function addCardProgress(title, summary, progress) {
-    let progress1 = document.querySelector('.tasksInprogress'); // default
+    const form2 = document.getElementById('form2');
+    let progress1 = document.querySelector('.tasksInprogress2'); // default
     if (progress == 'In review') {
-        progress1 = document.querySelector('.tasksInreview')
+        progress1 = document.querySelector('.tasksInreview2')
     } else if (progress == 'Completed') {
-        progress1 = document.querySelector('.tasksCompleted');
+        progress1 = document.querySelector('.tasksCompleted2');
     }
     const NS = "http://www.w3.org/2000/svg";
 
@@ -123,18 +124,71 @@ function addCardProgress(title, summary, progress) {
     })
 
     cardDiv.append(svg, cardH1, cardP);
-    progress1.append(cardDiv);
+    progress1.appendChild(cardDiv);
 
     cardDiv.addEventListener('click', e => {
         let current = 'tasksInprogress';
         if (e.target.closest('.icon')) return;
             e.stopPropagation();
             current = [...cardDiv.parentElement.classList].find(c => {
-                return ['tasksInprogress', 'tasksInreview', 'tasksCompleted'].includes(c)
+                return ['tasksInprogress2', 'tasksInreview2', 'tasksCompleted2'].includes(c)
             })
-            console.log(current)
+        const remove = document.getElementById('modal2');
+        remove.classList.remove('hiddenitem2')
+        if (current == 'tasksInreview'){
+            current = 'In review';
+        } else if (current == 'tasksCompleted'){
+            current = 'Completed';
+        } else {
+            current = 'In progress';
+        }
+        form2.addEventListener('submit', () => {
+            if (form2.querySelector('input[name="choice"]:checked')?.value === 'In review') {
+                cardDiv.classList.add('tasksInreview');
+                const clone = cardDiv.cloneNode(true);
+                const tasksReview = document.querySelector('.tasksInreview2')
+                cardDiv.classList.remove('tasksInprogress');
+                cardDiv.classList.remove('tasksCompleted');
+                cardDiv.remove()
+                let svg1 = clone.querySelector('svg')
+                svg1.addEventListener('click',(x)=>{
+                    x.currentTarget.parentElement.remove();
+                })
+                tasksReview.appendChild(clone);
+                remove.classList.add('hiddenitem2')
 
+            } else if (form2.querySelector('input[name="choice"]:checked')?.value === 'Completed') {
+                cardDiv.classList.add('tasksCompleted');
+                const clone = cardDiv.cloneNode(true);
+                const tasksComplete = document.querySelector('.tasksCompleted2')
+                cardDiv.classList.remove('tasksInprogress');
+                cardDiv.classList.remove('tasksInreview');
+                cardDiv.remove()
+                let svg1 = clone.querySelector('svg')
+                svg1.addEventListener('click',(x)=>{
+                    x.currentTarget.parentElement.remove();
+                })
+                tasksComplete.appendChild(clone);
+                remove.classList.add('hiddenitem2')
+            } else {
+                cardDiv.classList.add('tasksInprogress');
+                const clone = cardDiv.cloneNode(true);
+                const tasksInprogress = document.querySelector('.tasksInprogress2')
+                cardDiv.classList.remove('tasksCompleted');
+                cardDiv.classList.remove('tasksInreview');
+                cardDiv.remove()
+                let svg1 = clone.querySelector('svg')
+                svg1.addEventListener('click',(x)=>{
+                    x.currentTarget.parentElement.remove();
+                })
+                tasksInprogress.appendChild(clone);
+                remove.classList.add('hiddenitem2')
+
+            }
+        })
     })
+
+
 
 
 

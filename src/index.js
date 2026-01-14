@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const form1 = document.querySelector('.form1')
+  const form2 = document.getElementById('form2')
 
   form1.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -34,20 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addCardProgress(title, summary, choice)
 });
-const form2 = document.querySelector(".form2");
-const modal2 = document.querySelector(".modal2");
 
-form2.addEventListener("submit", (e) => {
-  e.preventDefault(); // 🚫 stop page reload
-
-  // 👉 handle form data here
-  // const data = new FormData(form);
-
-  // ✅ close form
-  form2.classList.add("hiddenitem2");
-  modal2.classList.add("hiddenitem2");
-});
-
+form2.addEventListener('submit',(e)=> {
+  e.preventDefault()
+  console.log(e)
+})
 
 });
 
