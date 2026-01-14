@@ -125,8 +125,21 @@ function addCardProgress(title, summary, progress) {
     cardDiv.append(svg, cardH1, cardP);
     progress1.append(cardDiv);
 
+    cardDiv.addEventListener('click', e => {
+        let current = 'tasksInprogress';
+        if (e.target.closest('.icon')) return;
+            e.stopPropagation();
+            current = [...cardDiv.parentElement.classList].find(c => {
+                return ['tasksInprogress', 'tasksInreview', 'tasksCompleted'].includes(c)
+            })
+            console.log(current)
+
+    })
+
+
 
 }
+
 
 
 

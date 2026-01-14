@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  form.addEventListener("submit", (e) => {
+  const form1 = document.querySelector('.form1')
+
+  form1.addEventListener("submit", (e) => {
   e.preventDefault();
 
     const title = document.querySelector('[id="title"]').value;
@@ -33,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   addCardProgress(title, summary, choice)
 });
 const form2 = document.querySelector(".form2");
-const modal2 = document.querySelector(".modal2"); // if you have one
+const modal2 = document.querySelector(".modal2");
 
 form2.addEventListener("submit", (e) => {
   e.preventDefault(); // 🚫 stop page reload
@@ -45,7 +47,6 @@ form2.addEventListener("submit", (e) => {
   form2.classList.add("hiddenitem2");
   modal2.classList.add("hiddenitem2");
 });
-
 
 
 });

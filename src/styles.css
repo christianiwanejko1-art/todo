@@ -267,6 +267,23 @@ body {
     display: none;
 }
 
+.cardButton {
+    grid-row: 4;
+    border: none;
+}
+
+.tasksInprogressBTN {
+    background-color: red;
+}
+
+.tasksInreviewBTN {
+    background-color: orange;
+}
+
+.tasksCompletedBTN {
+    background-color: green;
+}
+
 @media (max-width: 1000px) {
 
   #tasksContainer {

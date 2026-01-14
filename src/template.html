@@ -11,7 +11,7 @@
   <body class="no-scroll">
     <!-- inspiration https://dribbble.com/shots/25907727-HR-Project-Task-Management-Dashboard -->
     <div id="app"> 
-<!-- to add: icons to delete todo cards, collapsable navigation menu, button to push to review or completed or visa versa, form should close when correct inputs are entered (add button - denominate the task speciality with colours) later stage , make nav responsive and add icons-->
+<!-- show current status, update status when clicked (form should open and select which status of task) -->
     </div>
     <!-- on click of button, form appears + background. If clicked off the form, it should change the display -->
   <div id="modal" class="hidden hiddenitem">
@@ -30,8 +30,8 @@
     </div>
   </div>
 
-  <div class="hiddenitem2 modal2">
-    <div id="form2">
+  <div class="modal2 hiddenitem2">
+    <div id="form2" class="overlay">
       <form class="form2">
           <h1>Click on task status</h1>
           <label for="radio1">In progress<input type="radio" id="radio1" name="choice" value="In progress"></label>
