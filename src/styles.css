@@ -201,7 +201,7 @@ body {
 }
 
 /* Modal overlay */
-#modal {
+.hidden {
   position: fixed;
   inset: 0;
   display: grid;
@@ -210,11 +210,9 @@ body {
   z-index: 1000;
 }
 
-/* Hide modal */
-.hidden {
-  display: none;
+.hiddenitem {
+    display: none;
 }
-
 
 
 @media (max-width: 1000px) {

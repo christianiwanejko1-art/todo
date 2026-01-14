@@ -11,16 +11,17 @@
   <body class="no-scroll">
     <!-- inspiration https://dribbble.com/shots/25907727-HR-Project-Task-Management-Dashboard -->
     <div id="app"> 
-
+<!-- to add: icons to delete todo cards, collapsable navigation menu, button to push to review or completed or visa versa-->
     </div>
-  <div id="modal" class="hidden">
-    <div id="form">
-      <form>
+    <!-- on click of button, form appears + background. If clicked off the form, it should change the display -->
+  <div id="modal" class="hidden hiddenitem">
+    <div id="form" class="forminner hiddenitem">
+      <form class="form1">
           <h1>Create New Todo</h1>
           <label for="title">Task name</label>
-          <input type="text" id="title">
+          <input type="text" id="title" name="title" required>
           <label for="summary">Task summary</label>
-          <input type="text" id="summary">
+          <input type="text" id="summary" name="summary" required>
           <label for="radio1">In progress<input type="radio" id="radio1" name="choice" value="In progress"></label>
           <label for="radio1">In review<input type="radio" id="radio2" name="choice" value="In review"></label>
           <label for="radio3">Completed<input type="radio" id="radio3" name="choice" value="Completed"></label>

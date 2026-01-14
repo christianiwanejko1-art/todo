@@ -89,11 +89,15 @@ const createHome = function () {
 
 
 
-function addCardProgress(title, summary) {
-    const progress = document.querySelector('.tasksInprogress'); // or .tasksInprogress
+function addCardProgress(title, summary, progress) {
+    let progress1 = document.querySelector('.tasksInprogress'); // default
+    if (progress == 'In review') {
+        progress1 = document.querySelector('.tasksInreview')
+    } else if (progress == 'Completed') {
+        progress1 = document.querySelector('.tasksCompleted');
+    }
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
-
     const cardH1 = document.createElement('h1');
     cardH1.textContent = title;
 
@@ -101,7 +105,7 @@ function addCardProgress(title, summary) {
     cardP.textContent = summary;
 
     cardDiv.append(cardH1, cardP);
-    progress.append(cardDiv);
+    progress1.append(cardDiv);
 }
 
 
