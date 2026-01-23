@@ -1,0 +1,5 @@
+when page shrink, use navbar with burger menu
+
+when click on assigned task, let user select another option for it to move there
+
+click card, open form, user select option, move card to that option

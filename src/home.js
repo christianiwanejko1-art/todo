@@ -1,4 +1,6 @@
 const content = document.getElementById('app');
+const remove = document.getElementById('modal2');
+
 
 const createHome = function () {
     content.innerHTML = ''
@@ -87,9 +89,10 @@ const createHome = function () {
     content.append(main);
 };
 
+let activeCard = null;
 
 
-function addCardProgress(title, summary, progress) {
+function addCardProgress(title, summary, progress, randomId) {
     const form2 = document.getElementById('form2');
     let progress1 = document.querySelector('.tasksInprogress2'); // default
     if (progress == 'In review') {
@@ -113,80 +116,48 @@ function addCardProgress(title, summary, progress) {
 
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
+    cardDiv.dataset.id = randomId;
     const cardH1 = document.createElement('h1');
     cardH1.textContent = title;
-
     const cardP = document.createElement('p');
     cardP.textContent = summary;
 
     svg.addEventListener('click', (x) => {
         x.currentTarget.parentElement.remove();
     })
-
+    activeCard = cardDiv; // ✅ remember WHICH card
     cardDiv.append(svg, cardH1, cardP);
-    progress1.appendChild(cardDiv);
-
     cardDiv.addEventListener('click', e => {
         let current = 'tasksInprogress';
         if (e.target.closest('.icon')) return;
+        const card = e.target.closest('.card');
+        const taskId = card.dataset.id;
+        if (!card) return;
             e.stopPropagation();
             current = [...cardDiv.parentElement.classList].find(c => {
                 return ['tasksInprogress2', 'tasksInreview2', 'tasksCompleted2'].includes(c)
             })
-        const remove = document.getElementById('modal2');
-        remove.classList.remove('hiddenitem2')
-        if (current == 'tasksInreview'){
-            current = 'In review';
-        } else if (current == 'tasksCompleted'){
-            current = 'Completed';
-        } else {
-            current = 'In progress';
-        }
-        form2.addEventListener('submit', () => {
-            if (form2.querySelector('input[name="choice"]:checked')?.value === 'In review') {
-                cardDiv.classList.add('tasksInreview');
-                const clone = cardDiv.cloneNode(true);
-                const tasksReview = document.querySelector('.tasksInreview2')
-                cardDiv.classList.remove('tasksInprogress');
-                cardDiv.classList.remove('tasksCompleted');
-                cardDiv.remove()
-                let svg1 = clone.querySelector('svg')
-                svg1.addEventListener('click',(x)=>{
-                    x.currentTarget.parentElement.remove();
-                })
-                tasksReview.appendChild(clone);
-                remove.classList.add('hiddenitem2')
-
-            } else if (form2.querySelector('input[name="choice"]:checked')?.value === 'Completed') {
-                cardDiv.classList.add('tasksCompleted');
-                const clone = cardDiv.cloneNode(true);
-                const tasksComplete = document.querySelector('.tasksCompleted2')
-                cardDiv.classList.remove('tasksInprogress');
-                cardDiv.classList.remove('tasksInreview');
-                cardDiv.remove()
-                let svg1 = clone.querySelector('svg')
-                svg1.addEventListener('click',(x)=>{
-                    x.currentTarget.parentElement.remove();
-                })
-                tasksComplete.appendChild(clone);
-                remove.classList.add('hiddenitem2')
+            console.log(current);
+            remove.classList.remove('hiddenitem2')
+            if (current == 'tasksInreview'){
+                current = 'review';
+            } else if (current == 'tasksCompleted'){
+                current = 'completed';
             } else {
-                cardDiv.classList.add('tasksInprogress');
-                const clone = cardDiv.cloneNode(true);
-                const tasksInprogress = document.querySelector('.tasksInprogress2')
-                cardDiv.classList.remove('tasksCompleted');
-                cardDiv.classList.remove('tasksInreview');
-                cardDiv.remove()
-                let svg1 = clone.querySelector('svg')
-                svg1.addEventListener('click',(x)=>{
-                    x.currentTarget.parentElement.remove();
-                })
-                tasksInprogress.appendChild(clone);
-                remove.classList.add('hiddenitem2')
-
+                current = 'progress';
             }
+
+
         })
-    })
+    progress1.appendChild(cardDiv);
+
+
+form2.addEventListener('submit', (e) => {
+  e.preventDefault();
+    
+  remove.classList.add('hiddenitem2');
+  
+});
 
 
 

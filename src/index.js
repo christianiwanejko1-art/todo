@@ -3,9 +3,15 @@ import { createHome, addCardProgress } from "./home.js";
 
 console.log('js loaded')
 
+let states = {
+  progress: [],
+  review: [],
+  complete: []
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     createHome()
-    addCardProgress('Wireframing','Creating wireframes based on user research');
+    // addCardProgress('Wireframing','Creating wireframes based on user research');
 
     const addBtn = document.querySelector('.addBtn');
     addBtn.addEventListener('click', () => {
@@ -32,14 +38,32 @@ document.addEventListener("DOMContentLoaded", () => {
     const title = document.querySelector('[id="title"]').value;
     const summary = document.querySelector('[id="summary"]').value;
     const choice = document.querySelector('input[name="choice"]:checked').value;
+    let type;
+    console.log(choice)
+    if (choice === 'In progress'){
+      type = 'progress';
+    } else if (choice === 'In review'){
+      type = 'review';
+    } else {
+      type = 'complete';
+    }
+    const randomId = crypto.randomUUID();
+    states[type].push({'type': type, 'id':randomId})
 
-  addCardProgress(title, summary, choice)
+    console.log(states)
+  addCardProgress(title, summary, choice, randomId)
+  const progresscol = document.querySelector('.tasksInprogress2');
+  const reviewcol = document.querySelector('.tasksInreview2');
+  const completecol = document.querySelector('.tasksCompleted2');
+
+
+  
+  
 });
 
-form2.addEventListener('submit',(e)=> {
-  e.preventDefault()
-  console.log(e)
-})
+
+
+
 
 });
 
