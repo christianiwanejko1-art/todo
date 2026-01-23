@@ -127,11 +127,12 @@ function addCardProgress(title, summary, progress, randomId) {
     })
     activeCard = cardDiv; // ✅ remember WHICH card
     cardDiv.append(svg, cardH1, cardP);
+    let taskId
     cardDiv.addEventListener('click', e => {
         let current = 'tasksInprogress';
         if (e.target.closest('.icon')) return;
         const card = e.target.closest('.card');
-        const taskId = card.dataset.id;
+        taskId = card.dataset.id;
         if (!card) return;
             e.stopPropagation();
             current = [...cardDiv.parentElement.classList].find(c => {
@@ -154,7 +155,21 @@ function addCardProgress(title, summary, progress, randomId) {
 
 form2.addEventListener('submit', (e) => {
   e.preventDefault();
-    
+    console.log(taskId);
+    const card = document.querySelector(`[data-id="${taskId}"]`);
+    if (!card) return;
+    const checked = document.querySelector('input[name="choice"]:checked').value;
+    if (!checked) return;
+    if (checked === 'In progress'){
+        const progress1 = document.querySelector('.tasksInprogress2');
+        progress1.appendChild(card);
+    } else if (checked === 'In review'){
+        const review1 = document.querySelector('.tasksInreview2');
+        review1.appendChild(card);
+    } else {
+        const complete1 = document.querySelector('.tasksCompleted2');
+        complete1.appendChild(card);
+    }
   remove.classList.add('hiddenitem2');
   
 });

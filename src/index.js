@@ -49,17 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const randomId = crypto.randomUUID();
     states[type].push({'type': type, 'id':randomId})
-
-    console.log(states)
   addCardProgress(title, summary, choice, randomId)
-  const progresscol = document.querySelector('.tasksInprogress2');
-  const reviewcol = document.querySelector('.tasksInreview2');
-  const completecol = document.querySelector('.tasksCompleted2');
-
-
   
-  
+
 });
+
 
 
 
