@@ -1,6 +1,30 @@
 const content = document.getElementById('app');
 const remove = document.getElementById('modal2');
+let taskId
+const form2 = document.getElementById('form2');
+form2.addEventListener('submit', (e) => {
+  console.log('SUBMITTED FORM:', e.target, 'id=', e.target.id, 'class=', e.target.className);
+  e.preventDefault();
+console.log('fired');
+  const card = document.querySelector(`[data-id="${taskId}"]`);
+  if (!card) return;
 
+  const checkedEl = document.querySelector('input[name="choice2"]:checked');
+  if (!checkedEl) return;
+
+  const clone = card
+//   clone.dataset.id = crypto.randomUUID();
+
+  if (checkedEl.value === 'In progress') {
+    document.querySelector('.tasksInprogress2').appendChild(clone);
+  } else if (checkedEl.value === 'In review') {
+    document.querySelector('.tasksInreview2').appendChild(clone);
+  } else {
+    document.querySelector('.tasksCompleted2').appendChild(clone);
+  }
+
+  remove.classList.add('hiddenitem2');
+}, true);
 
 const createHome = function () {
     content.innerHTML = ''
@@ -125,9 +149,9 @@ function addCardProgress(title, summary, progress, randomId) {
     svg.addEventListener('click', (x) => {
         x.currentTarget.parentElement.remove();
     })
+
     activeCard = cardDiv; // ✅ remember WHICH card
     cardDiv.append(svg, cardH1, cardP);
-    let taskId
     cardDiv.addEventListener('click', e => {
         let current = 'tasksInprogress';
         if (e.target.closest('.icon')) return;
@@ -153,26 +177,6 @@ function addCardProgress(title, summary, progress, randomId) {
     progress1.appendChild(cardDiv);
 
 
-form2.addEventListener('submit', (e) => {
-  e.preventDefault();
-    console.log(taskId);
-    const card = document.querySelector(`[data-id="${taskId}"]`);
-    if (!card) return;
-    const checked = document.querySelector('input[name="choice"]:checked').value;
-    if (!checked) return;
-    if (checked === 'In progress'){
-        const progress1 = document.querySelector('.tasksInprogress2');
-        progress1.appendChild(card);
-    } else if (checked === 'In review'){
-        const review1 = document.querySelector('.tasksInreview2');
-        review1.appendChild(card);
-    } else {
-        const complete1 = document.querySelector('.tasksCompleted2');
-        complete1.appendChild(card);
-    }
-  remove.classList.add('hiddenitem2');
-  
-});
 
 
 

@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       type = 'complete';
     }
     const randomId = crypto.randomUUID();
-    states[type].push({'type': type, 'id':randomId})
+    // states[type].push({'type': type, 'id':randomId})
   addCardProgress(title, summary, choice, randomId)
   
 
