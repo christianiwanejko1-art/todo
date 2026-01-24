@@ -13,8 +13,25 @@
     <div id="app"> 
 <!-- show current status, update status when clicked (form should open and select which status of task) -->
     </div>
+    <div id="mobileNavContainer" class="hidden1">
+      <svg class="svgBurger hidden1" id="svgBurger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>menu</title><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      <div id="mobileNav" class="hidden1">
+        <ul>
+          <li>Main Menu</li>
+          <li>Dashboard</li>
+          <li>Tasks</li>
+          <li>Notes</li>
+          <li>Email</li>
+          <li>Calender</li>
+          <li>Reports</li>
+          <li>Contacts</li>
+          <li>Invite Team</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- on click of button, form appears + background. If clicked off the form, it should change the display -->
-  <div id="modal" class="hidden hiddenitem">
+    <div id="modal" class="hidden hiddenitem">
     <div id="form" class="forminner hiddenitem">
       <form class="form1">
           <h1>Create New Todo</h1>
@@ -41,5 +58,6 @@
         </form>
     </div>
   </div>
+
   </body>
 </html>

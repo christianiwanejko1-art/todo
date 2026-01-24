@@ -16,6 +16,9 @@ html {
     position: relative;
 }
 
+.hidden1{
+    display: none;
+}
 
 #navBar {
     position: relative
@@ -309,6 +312,13 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
+#mobileNavContainer{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+}
+
 
 @media (max-width: 1000px) {
 
@@ -336,7 +346,7 @@ body {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .tasksInProgressWrapper {
     grid-column: 2 / 5;
     grid-row: 1;
@@ -351,4 +361,40 @@ body {
     grid-column: 2 / 5;
     grid-row: 3;
   }
+
+  #main {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .navBar {
+    display: none;
+  }
+
+    #mobileNavContainer{
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+    }
+
+  #tasksContainer {
+    grid-column: 1 / 2;
+  }
+
+  #mobileNav {
+    background-color: black;
+    color: white;
+    padding: 16px;
+  }
+
+  #mobileNav li {
+    list-style-type: none;
+    padding: 8px;
+  }
+
+  #svgBurger {
+    width: 40px;
+    height: auto;
+  }
+  
 }

@@ -55,6 +55,37 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+const el = document.getElementById('mobileNavContainer');
+const bg = document.getElementById('mobileNav');
+const svg1 = document.getElementById('svgBurger');
+
+svg1.addEventListener('click',()=>{
+  if (bg.classList.contains('hidden1')){
+    bg.classList.remove('hidden1');
+  } else {
+    bg.classList.add('hidden1');
+  }
+})
+function handleResize() {
+  if (window.innerWidth < 768) {
+    svg1.classList.remove('hidden1')
+    el.classList.remove('hidden1');
+
+  } else {
+    svg1.classList.add('hidden1')
+    el.classList.add('hidden1');
+  }
+}
+
+window.addEventListener('resize', handleResize)
+
+const parent = document.querySelector('.mobileNavContainer');
+
+molbileNav.querySelectorAll('*').forEach(child => {
+  child.classList.add('hidden1');    // add
+  // child.classList.remove('active'); // remove
+});
+
 
 
 
