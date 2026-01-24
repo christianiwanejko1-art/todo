@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <script defer src="bundle.js"></script></head>
+  <body class="no-scroll">
+    <!-- inspiration https://dribbble.com/shots/25907727-HR-Project-Task-Management-Dashboard -->
+    <div id="app"> 
+<!-- show current status, update status when clicked (form should open and select which status of task) -->
+    </div>
+    <div id="mobileNavContainer" class="hidden1">
+      <svg class="svgBurger hidden1" id="svgBurger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>menu</title><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+      <div id="mobileNav" class="hidden1">
+        <ul>
+          <li>Main Menu</li>
+          <li>Dashboard</li>
+          <li>Tasks</li>
+          <li>Notes</li>
+          <li>Email</li>
+          <li>Calender</li>
+          <li>Reports</li>
+          <li>Contacts</li>
+          <li>Invite Team</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- on click of button, form appears + background. If clicked off the form, it should change the display -->
+    <div id="modal" class="hidden hiddenitem">
+    <div id="form" class="forminner hiddenitem">
+      <form class="form1">
+          <h1>Create New Todo</h1>
+          <label for="title">Task name</label>
+          <input type="text" id="title" name="title" required>
+          <label for="summary">Task summary</label>
+          <input type="text" id="summary" name="summary" required>
+          <label for="radio1">In progress<input type="radio" id="radio1" name="choice" value="In progress"></label>
+          <label for="radio1">In review<input type="radio" id="radio2" name="choice" value="In review"></label>
+          <label for="radio3">Completed<input type="radio" id="radio3" name="choice" value="Completed"></label>
+          <input type="submit" value="Submit">
+        </form>
+    </div>
+  </div>
+
+  <div id="modal2" class="hiddenitem2">
+    <div id="form2outer">
+      <form class="form2" id="form2">
+          <h1>Click on task status</h1>
+          <label for="radio1">In progress<input type="radio" id="radio1" name="choice2" value="In progress"></label>
+          <label for="radio1">In review<input type="radio" id="radio2" name="choice2" value="In review"></label>
+          <label for="radio3">Completed<input type="radio" id="radio3" name="choice2" value="Completed"></label>
+          <input type="submit" value="OK">
+        </form>
+    </div>
+  </div>
+
+  </body>
+</html>
